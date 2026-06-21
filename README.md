@@ -75,7 +75,7 @@ School-Log-X/
 
 1. Azure Portal에서 **Azure Static Web Apps** 리소스를 생성합니다.
 2. 생성 과정에서 발급된 배포 토큰을 GitHub 저장소 시크릿에 `AZURE_STATIC_WEB_APPS_API_TOKEN` 이름으로 추가합니다.
-3. `main` 브랜치에 푸시하면 GitHub Actions 워크플로우가 실행되어 `dist` 산출물이 자동 배포됩니다.
+3. `master` 브랜치에 푸시하면 GitHub Actions 워크플로우가 실행되어 `dist` 산출물이 자동 배포됩니다.
 
 ---
 
