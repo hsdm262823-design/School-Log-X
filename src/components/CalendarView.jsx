@@ -6,21 +6,35 @@ const VIEW_TITLES = {
 
 export default function CalendarView({ viewMode, onViewChange, events }) {
   return (
-    <section>
-      <h2>{VIEW_TITLES[viewMode]}</h2>
-      <div aria-label="캘린더 보기 전환">
-        <button type="button" onClick={() => onViewChange('month')}>
-          월
-        </button>
-        <button type="button" onClick={() => onViewChange('week')}>
-          주
-        </button>
-        <button type="button" onClick={() => onViewChange('day')}>
-          일
-        </button>
+    <section className="panel panel-calendar">
+      <div className="panel-head">
+        <h2 className="panel-title">{VIEW_TITLES[viewMode]}</h2>
+        <div className="segmented-control" aria-label="캘린더 보기 전환">
+          <button
+            className={viewMode === 'month' ? 'segmented is-active' : 'segmented'}
+            type="button"
+            onClick={() => onViewChange('month')}
+          >
+            월
+          </button>
+          <button
+            className={viewMode === 'week' ? 'segmented is-active' : 'segmented'}
+            type="button"
+            onClick={() => onViewChange('week')}
+          >
+            주
+          </button>
+          <button
+            className={viewMode === 'day' ? 'segmented is-active' : 'segmented'}
+            type="button"
+            onClick={() => onViewChange('day')}
+          >
+            일
+          </button>
+        </div>
       </div>
 
-      <ul>
+      <ul className="calendar-list">
         {events.map((event) => (
           <li key={event.id}>
             <span>{event.subject}</span> <span>{event.title}</span>{' '}

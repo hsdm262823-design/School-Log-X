@@ -12,23 +12,25 @@ export default function ProgressPanel({
   }, [progress])
 
   return (
-    <section>
-      <h2>과목별 진행률</h2>
+    <section className="panel panel-progress">
+      <h2 className="panel-title">과목별 진행률</h2>
       {subjects.map((subject) => (
-        <div key={subject}>
+        <div key={subject} className="progress-card">
           <label htmlFor={`progress-${subject}`}>{subject} 진행률</label>
-          <input
-            id={`progress-${subject}`}
-            type="number"
-            min="0"
-            max="100"
-            value={progressDraft[subject] ?? ''}
-            onChange={(e) => onDraftChange(subject, e.target.value)}
-          />
-          <button type="button" onClick={() => onSave(subject)}>
-            진행률 저장
-          </button>
-          <p>
+          <div className="progress-row">
+            <input
+              id={`progress-${subject}`}
+              type="number"
+              min="0"
+              max="100"
+              value={progressDraft[subject] ?? ''}
+              onChange={(e) => onDraftChange(subject, e.target.value)}
+            />
+            <button className="secondary-btn" type="button" onClick={() => onSave(subject)}>
+              진행률 저장
+            </button>
+          </div>
+          <p className="progress-value">
             {subject}: {progress[subject] ?? 0}%
           </p>
         </div>

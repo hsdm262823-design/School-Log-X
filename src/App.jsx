@@ -103,30 +103,35 @@ function App() {
   }
 
   return (
-    <main>
-      <h1>School Log X</h1>
+    <main className="app-shell">
+      <header className="app-header">
+        <h1 className="app-title">School Log X</h1>
+        <p className="app-subtitle">과제·시험을 한눈에 정리하는 학생 플래너</p>
+      </header>
       {uiError && (
-        <p role="status" aria-live="polite">
+        <p className="status-banner" role="status" aria-live="polite">
           {uiError}
         </p>
       )}
 
-      <ScheduleForm
-        form={form}
-        errors={errors}
-        onChange={handleFormChange}
-        onSubmit={handleSubmit}
-      />
+      <section className="app-grid" role="region" aria-label="일정 관리 영역">
+        <ScheduleForm
+          form={form}
+          errors={errors}
+          onChange={handleFormChange}
+          onSubmit={handleSubmit}
+        />
 
-      <CalendarView viewMode={viewMode} onViewChange={setViewMode} events={events} />
-      <DdayPanel events={futureEvents} getDdayLabel={getDdayLabel} />
+        <CalendarView viewMode={viewMode} onViewChange={setViewMode} events={events} />
+        <DdayPanel events={futureEvents} getDdayLabel={getDdayLabel} />
 
-      <ProgressPanel
-        progress={progress}
-        progressDraft={progressDraft}
-        onDraftChange={handleProgressDraftChange}
-        onSave={handleSaveProgress}
-      />
+        <ProgressPanel
+          progress={progress}
+          progressDraft={progressDraft}
+          onDraftChange={handleProgressDraftChange}
+          onSave={handleSaveProgress}
+        />
+      </section>
     </main>
   )
 }
