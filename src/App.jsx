@@ -5,14 +5,27 @@ import ProgressPanel from './components/ProgressPanel'
 import ScheduleForm from './components/ScheduleForm'
 import { getDdayLabel, getFutureEventsSorted } from './utils/date'
 import { loadEvents, loadProgress, saveEvents, saveProgress } from './utils/storage'
-import { validateEventInput, validateProgress } from './utils/validators'
+import {
+  normalizeDateInput,
+  validateEventInput,
+  validateProgress,
+} from './utils/validators'
 
-const INITIAL_FORM = {
-  type: '',
-  subject: '',
-  title: '',
-  date: '',
-  memo: '',
+function getTodayDateString(now = new Date()) {
+  const year = now.getFullYear()
+  const month = String(now.getMonth() + 1).padStart(2, '0')
+  const day = String(now.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
+
+function getInitialForm() {
+  return {
+    type: 'assignment',
+    subject: '',
+    title: '',
+    date: getTodayDateString(),
+    memo: '',
+  }
 }
 
 function initializeStorageState() {
@@ -36,7 +49,7 @@ function App() {
   const [events, setEvents] = useState(initialStorage.events)
   const [progress, setProgress] = useState(initialStorage.progress)
   const [viewMode, setViewMode] = useState('month')
-  const [form, setForm] = useState(INITIAL_FORM)
+  const [form, setForm] = useState(() => getInitialForm())
   const [errors, setErrors] = useState({})
   const [uiError, setUiError] = useState(initialStorage.initialError)
   const [progressDraft, setProgressDraft] = useState({})
@@ -60,6 +73,7 @@ function App() {
     const nextEvent = {
       id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
       ...form,
+      date: normalizeDateInput(form.date) ?? form.date,
     }
     const nextEvents = [...events, nextEvent]
 
@@ -71,7 +85,7 @@ function App() {
     }
 
     setEvents(nextEvents)
-    setForm(INITIAL_FORM)
+    setForm(getInitialForm())
     setUiError('')
   }
 

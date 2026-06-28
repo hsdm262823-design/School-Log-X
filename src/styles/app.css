@@ -76,6 +76,29 @@ body {
   gap: 6px;
 }
 
+.date-input-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.date-part {
+  display: grid;
+  gap: 6px;
+}
+
+.date-part > label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.date-help {
+  margin: 6px 0 0;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
 label {
   font-weight: 600;
   color: #1f2937;
@@ -163,13 +186,91 @@ button:disabled {
   list-style: none;
 }
 
-.calendar-list li,
+.month-title {
+  margin: 0 0 10px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.week-title,
+.day-title {
+  margin: 0 0 10px;
+  font-weight: 700;
+  color: #334155;
+}
+
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.day-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+}
+
+.month-cell {
+  min-height: 90px;
+  border: 1px solid #eef2f7;
+  border-radius: 12px;
+  background: #fff;
+  padding: 8px;
+}
+
+.week-cell,
+.day-cell {
+  min-height: 90px;
+  border: 1px solid #eef2f7;
+  border-radius: 12px;
+  background: #fff;
+  padding: 8px;
+}
+
+.month-cell.empty {
+  border: 0;
+  background: transparent;
+}
+
+.month-day {
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+
+.week-day-label,
+.day-label {
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+
+.month-events {
+  margin: 0;
+  padding-left: 14px;
+  color: #1f2937;
+  font-size: 0.85rem;
+}
+
 .dday-item,
 .progress-card {
   border: 1px solid #eef2f7;
   border-radius: 14px;
   background: #fff;
   padding: 12px;
+}
+
+.week-events,
+.day-events {
+  margin: 0;
+  padding-left: 14px;
+  color: #1f2937;
+  font-size: 0.85rem;
 }
 
 .dday-item {
