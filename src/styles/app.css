@@ -1,0 +1,52 @@
+main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 16px;
+  font-family: system-ui, sans-serif;
+}
+
+h1,
+h2 {
+  margin-bottom: 8px;
+}
+
+section {
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+form {
+  display: grid;
+  gap: 8px;
+}
+
+input,
+select,
+textarea,
+button {
+  padding: 8px;
+}
+
+button {
+  cursor: pointer;
+}
+
+[role='alert'] {
+  color: #b00020;
+  margin: 0;
+}
+
+[role='status'] {
+  margin: 0 0 12px;
+  color: #b00020;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 1px;
+}
